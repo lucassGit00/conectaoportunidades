@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Conectamos pessoas a oportunidades de emprego. Entre em contato e encontre novas possibilidades para sua carreira.">
+  <title>Conecta Oportunidades | Seu próximo emprego começa aqui</title>
+  <style>
+    :root {
+      --navy: #10233f;
+      --blue: #1769e0;
+      --cyan: #19b6c9;
+      --ink: #1d2939;
+      --muted: #667085;
+      --light: #f4f8ff;
+      --white: #fff;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.6;
+    }
+    a { text-decoration: none; }
+    .container { width: min(1120px, 90%); margin: 0 auto; }
+    header {
+      background: rgba(255,255,255,.97);
+      border-bottom: 1px solid #e8eef7;
+      position: sticky; top: 0; z-index: 10;
+    }
+    .nav { min-height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: 10px; color: var(--navy); font-weight: 800; font-size: 1.1rem; }
+    .brand-mark {
+      width: 39px; height: 39px; border-radius: 12px; display: grid; place-items: center;
+      color: white; font-size: 20px; background: linear-gradient(135deg, var(--blue), var(--cyan));
+    }
+    .nav-links { display: flex; align-items: center; gap: 25px; }
+    .nav-links a { color: #475467; font-size: .94rem; font-weight: 600; }
+    .nav-links a:hover { color: var(--blue); }
+    .btn {
+      display: inline-flex; justify-content: center; align-items: center; gap: 9px;
+      padding: 13px 20px; border-radius: 10px; font-weight: 700; transition: .2s;
+    }
+    .btn-primary { background: var(--blue); color: white; box-shadow: 0 8px 20px rgba(23,105,224,.2); }
+    .btn-primary:hover { background: #0e55bd; transform: translateY(-2px); }
+    .btn-outline { border: 1px solid #cbd8eb; color: var(--navy); background: white; }
+    .hero {
+      overflow: hidden; position: relative; color: white;
+      background: radial-gradient(circle at 85% 15%, rgba(25,182,201,.35), transparent 28%),
+                  linear-gradient(120deg, #10233f 0%, #123b70 58%, #1769e0 100%);
+      padding: 92px 0 100px;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr .8fr; align-items: center; gap: 55px; }
+    .eyebrow {
+      display: inline-block; padding: 7px 12px; border: 1px solid rgba(255,255,255,.25);
+      border-radius: 30px; color: #d8f7ff; font-size: .85rem; font-weight: 700; letter-spacing: .3px;
+      background: rgba(255,255,255,.08);
+    }
+    h1 { font-size: clamp(2.5rem, 5vw, 4.4rem); line-height: 1.08; margin: 20px 0; letter-spacing: -1.8px; }
+    .hero p { max-width: 610px; color: #e2ecfb; font-size: 1.13rem; margin: 0 0 28px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero .btn-outline { background: rgba(255,255,255,.08); color: white; border-color: rgba(255,255,255,.35); }
+    .hero-card {
+      background: white; color: var(--ink); border-radius: 22px; padding: 27px;
+      box-shadow: 0 25px 70px rgba(0,0,0,.22); transform: rotate(1deg);
+    }
+    .hero-card h3 { color: var(--navy); margin: 0 0 7px; font-size: 1.25rem; }
+    .hero-card > p { color: var(--muted); font-size: .94rem; margin: 0 0 20px; }
+    .step { display: flex; gap: 13px; align-items: flex-start; padding: 13px 0; border-top: 1px solid #edf1f7; }
+    .step-icon { width: 35px; height: 35px; flex: 0 0 35px; border-radius: 10px; display: grid; place-items: center; background: #eaf3ff; }
+    .step strong { display: block; color: var(--navy); font-size: .95rem; }
+    .step span { color: var(--muted); font-size: .84rem; }
+    section { padding: 78px 0; }
+    .section-heading { text-align: center; max-width: 680px; margin: 0 auto 42px; }
+    .section-heading .tag { color: var(--blue); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; font-size: .78rem; }
+    h2 { color: var(--navy); font-size: clamp(1.9rem, 3vw, 2.7rem); line-height: 1.15; margin: 10px 0 13px; letter-spacing: -.7px; }
+    .section-heading p { color: var(--muted); margin: 0; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .card { border: 1px solid #e7edf6; border-radius: 16px; padding: 25px; background: white; box-shadow: 0 8px 28px rgba(16,35,63,.045); }
+    .card-icon { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 14px; background: #eaf3ff; font-size: 23px; }
+    .card h3 { margin: 17px 0 8px; color: var(--navy); }
+    .card p { margin: 0; color: var(--muted); font-size: .95rem; }
+    .how { background: var(--light); }
+    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; counter-reset: item; }
+    .how-step { background: white; border-radius: 16px; padding: 25px; border: 1px solid #e4ecf7; }
+    .number { color: var(--blue); font-size: .85rem; font-weight: 800; letter-spacing: 1px; }
+    .how-step h3 { color: var(--navy); margin: 9px 0 7px; }
+    .how-step p { color: var(--muted); margin: 0; font-size: .94rem; }
+    .cta {
+      background: linear-gradient(120deg, #eaf3ff, #e9fbfc);
+      border: 1px solid #dceafa; border-radius: 22px; padding: 42px;
+      display: flex; align-items: center; justify-content: space-between; gap: 25px;
+    }
+    .cta h2 { margin-top: 0; }
+    .cta p { color: var(--muted); margin-bottom: 0; }
+    .contact-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 35px; align-items: start; }
+    .contact-info { background: var(--navy); color: white; border-radius: 18px; padding: 30px; }
+    .contact-info h3 { font-size: 1.45rem; margin: 0 0 10px; }
+    .contact-info p { color: #d6e2f3; margin: 0 0 23px; }
+    .contact-link { display: flex; gap: 13px; align-items: center; padding: 15px 0; border-top: 1px solid rgba(255,255,255,.15); color: white; overflow-wrap: anywhere; }
+    .contact-link span:first-child { font-size: 21px; }
+    .contact-link small { display: block; color: #b9cce5; font-size: .78rem; }
+    .contact-link strong { font-size: .96rem; }
+    .contact-note { color: var(--muted); font-size: .92rem; padding: 8px 2px; }
+    footer { background: #0b192d; color: #b9c7d9; padding: 25px 0; font-size: .88rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 15px; flex-wrap: wrap; }
+    .whatsapp-float {
+      position: fixed; right: 22px; bottom: 22px; z-index: 20; width: 58px; height: 58px;
+      border-radius: 50%; display: grid; place-items: center; background: #20c66b; color: white;
+      font-size: 27px; box-shadow: 0 8px 25px rgba(0,0,0,.2);
+    }
+    @media (max-width: 800px) {
+      .hero-grid, .contact-grid { grid-template-columns: 1fr; }
+      .hero { padding: 68px 0 75px; }
+      .hero-card { max-width: 520px; transform: none; }
+      .cards, .steps-grid { grid-template-columns: 1fr; }
+      .cta { align-items: flex-start; flex-direction: column; padding: 30px; }
+      .nav-links { gap: 12px; }
+      .nav-links a:not(.btn) { display: none; }
+    }
+    @media (max-width: 420px) {
+      .brand { font-size: .96rem; }
+      .nav { min-height: 66px; }
+      .nav-links .btn { padding: 10px 12px; font-size: .83rem; }
+      .hero-actions .btn { width: 100%; }
+      section { padding: 60px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#inicio"><span class="brand-mark">↗</span> Conecta Oportunidades</a>
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato">Contato</a>
+        <a class="btn btn-primary" href="https://wa.me/5584981533312?text=Ol%C3%A1!%20Quero%20saber%20sobre%20oportunidades%20de%20emprego." target="_blank" rel="noopener">Fale conosco</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">🤝 Pessoas e oportunidades no mesmo caminho</span>
+          <h1>Seu próximo emprego pode começar aqui.</h1>
+          <p>Ajudamos quem está em busca de trabalho a encontrar oportunidades e chegar mais perto de novas possibilidades profissionais.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://wa.me/5584981533312?text=Ol%C3%A1!%20Estou%20procurando%20emprego%20e%20gostaria%20de%20ajuda." target="_blank" rel="noopener">📲 Quero encontrar uma vaga</a>
+            <a class="btn btn-outline" href="#como-funciona">Saiba como funciona</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <h3>Uma ponte para novas oportunidades</h3>
+          <p>Conte um pouco sobre o que procura e converse com nossa equipe.</p>
+          <div class="step"><div class="step-icon">📝</div><div><strong>1. Entre em contato</strong><span>Apresente seu perfil e área de interesse.</span></div></div>
+          <div class="step"><div class="step-icon">🔎</div><div><strong>2. Buscamos oportunidades</strong><span>Compartilhamos vagas compatíveis quando disponíveis.</span></div></div>
+          <div class="step"><div class="step-icon">🚀</div><div><strong>3. Dê o próximo passo</strong><span>Você recebe as informações para seguir no processo seletivo.</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre">
+      <div class="container">
+        <div class="section-heading">
+          <span class="tag">Nosso propósito</span>
+          <h2>Mais acesso a oportunidades. Mais caminhos para crescer.</h2>
+          <p>Nosso objetivo é aproximar pessoas que procuram trabalho de empresas e oportunidades disponíveis, facilitando o contato e a divulgação de vagas.</p>
+        </div>
+        <div class="cards">
+          <article class="card"><div class="card-icon">🔍</div><h3>Busca de oportunidades</h3><p>Ajudamos a localizar e divulgar oportunidades de trabalho de acordo com as áreas de interesse.</p></article>
+          <article class="card"><div class="card-icon">🤝</div><h3>Conexão profissional</h3><p>Facilitamos o contato entre candidatos e empresas que estejam recrutando.</p></article>
+          <article class="card"><div class="card-icon">📣</div><h3>Informação clara</h3><p>Orientamos sobre as informações da vaga e os próximos passos para entrar em contato com o recrutador.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="how" id="como-funciona">
+      <div class="container">
+        <div class="section-heading">
+          <span class="tag">É simples começar</span>
+          <h2>Como funciona?</h2>
+          <p>Um primeiro contato pode abrir portas para novas oportunidades.</p>
+        </div>
+        <div class="steps-grid">
+          <article class="how-step"><span class="number">PASSO 01</span><h3>Chame nossa equipe</h3><p>Envie uma mensagem pelo WhatsApp ou pelo e-mail informado nesta página.</p></article>
+          <article class="how-step"><span class="number">PASSO 02</span><h3>Informe o que procura</h3><p>Conte sua área de interesse, cidade e experiências profissionais, se tiver.</p></article>
+          <article class="how-step"><span class="number">PASSO 03</span><h3>Acompanhe as oportunidades</h3><p>Quando houver uma vaga compatível, você poderá receber as informações para se candidatar.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="cta">
+          <div><h2>Está procurando uma oportunidade?</h2><p>Entre em contato e conte como podemos ajudar na sua busca.</p></div>
+          <a class="btn btn-primary" href="https://wa.me/5584981533312?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20sobre%20oportunidades%20de%20emprego." target="_blank" rel="noopener">Conversar pelo WhatsApp →</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato">
+      <div class="container">
+        <div class="section-heading">
+          <span class="tag">Estamos à disposição</span>
+          <h2>Entre em contato</h2>
+          <p>Escolha o canal que preferir para falar com nossa equipe.</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3>Vamos conversar?</h3>
+            <p>Envie sua dúvida ou fale sobre o tipo de oportunidade que está procurando.</p>
+            <a class="contact-link" href="mailto:ricardomartins2000@gmail.com"><span>✉️</span><span><small>E-mail</small><strong>ricardomartins2000@gmail.com</strong></span></a>
+            <a class="contact-link" href="https://wa.me/5584981533312" target="_blank" rel="noopener"><span>📱</span><span><small>WhatsApp</small><strong>(84) 98153-3312</strong></span></a>
+          </div>
+          <div class="contact-note">
+            <h3 style="color:#10233f;margin-top:0">Uma observação importante</h3>
+            <p>As oportunidades dependem das vagas disponíveis e dos critérios definidos pelas empresas contratantes. O contato não garante contratação ou participação em processo seletivo.</p>
+            <p>Antes de compartilhar documentos ou dados pessoais, confirme a identidade da empresa responsável pela vaga. Nunca faça pagamentos para participar de processos seletivos sem verificar cuidadosamente a legitimidade da solicitação.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 Conecta Oportunidades. Todos os direitos reservados.</span>
+      <span>Conectando pessoas a novas possibilidades.</span>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/5584981533312?text=Ol%C3%A1!%20Vim%20pelo%20site." target="_blank" rel="noopener" aria-label="Fale pelo WhatsApp">✆</a>
+</body>
+</html>
